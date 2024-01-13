@@ -1,4 +1,11 @@
-"""TCGPlayer reprice tool."""
+"""
+TCGPlayer reprice tool.
+
+Usage
+-----
+python reprice.py filename.csv
+"""
+import sys
 import csv
 
 
@@ -64,13 +71,13 @@ def price_formula(card_data: CardData):
 
 
 if __name__ == '__main__':
-    FILENAME_INPUT = "TCGplayer__Pricing_Custom_Export_20240112_055627.csv"  # TODO Set this line to your exported price filename
-    filename_output = FILENAME_INPUT.replace(".", "_repriced.")
+    filename_input = sys.argv[1]
+    filename_output = filename_input.replace(".", "_repriced.")
 
     with open(filename_output, "w", newline="", encoding="utf8") as fileout:
         csvout = csv.writer(fileout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-        with open(FILENAME_INPUT, "r", newline="", encoding="utf8") as filein:
+        with open(filename_input, "r", newline="", encoding="utf8") as filein:
             csvin = csv.reader(filein, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
             for i, row in enumerate(csvin):
