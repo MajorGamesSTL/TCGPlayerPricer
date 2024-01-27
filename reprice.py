@@ -67,7 +67,10 @@ def price_formula(card_data: CardData):
     if tcg_direct_low > 3 or tcg_market_price > 3:
         return max(tcg_direct_low, tcg_market_price + 0.3)
 
-    return max(tcg_direct_low, tcg_market_price + 0.03, MIN_PRICE)
+    if tcg_direct_low != -1:
+        return max(tcg_direct_low - .01, MIN_PRICE)
+    else:
+        return max(tcg_market_price + .03, MIN_PRICE)
 
 
 if __name__ == '__main__':
