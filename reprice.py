@@ -75,7 +75,7 @@ def price_formula(card_data: CardData):
 
 if __name__ == '__main__':
     filename_input = sys.argv[1]
-    filename_output = filename_input.replace(".", "_repriced.")
+    filename_output = filename_input.replace(".csv", "_repriced.csv")
 
     with open(filename_output, "w", newline="", encoding="utf8") as fileout:
         csvout = csv.writer(fileout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
